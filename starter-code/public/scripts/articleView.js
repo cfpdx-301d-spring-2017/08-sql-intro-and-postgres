@@ -2,8 +2,8 @@
 
 const articleView = {};
 
-articleView.populateFilters = function() {
-  $('article').each(function() {
+articleView.populateFilters = function () {
+  $('article').each(function () {
     if (!$(this).hasClass('template')) {
       let val = $(this).find('address a').text();
       let optionTag = `<option value="${val}">${val}</option>`;
@@ -21,8 +21,8 @@ articleView.populateFilters = function() {
   });
 };
 
-articleView.handleAuthorFilter = function() {
-  $('#author-filter').on('change', function() {
+articleView.handleAuthorFilter = function () {
+  $('#author-filter').on('change', function () {
     if ($(this).val()) {
       $('article').hide();
       $(`article[data-author="${$(this).val()}"]`).fadeIn();
@@ -34,8 +34,8 @@ articleView.handleAuthorFilter = function() {
   });
 };
 
-articleView.handleCategoryFilter = function() {
-  $('#category-filter').on('change', function() {
+articleView.handleCategoryFilter = function () {
+  $('#category-filter').on('change', function () {
     if ($(this).val()) {
       $('article').hide();
       $(`article[data-category="${$(this).val()}"]`).fadeIn();
@@ -47,8 +47,8 @@ articleView.handleCategoryFilter = function() {
   });
 };
 
-articleView.handleMainNav = function() {
-  $('.main-nav').on('click', '.tab', function() {
+articleView.handleMainNav = function () {
+  $('.main-nav').on('click', '.tab', function () {
     $('.tab-content').hide();
     $(`#${$(this).data('content')}`).fadeIn();
   });
@@ -56,9 +56,9 @@ articleView.handleMainNav = function() {
   $('.main-nav .tab:first').click();
 };
 
-articleView.setTeasers = function() {
+articleView.setTeasers = function () {
   $('.article-body *:nth-of-type(n+2)').hide();
-  $('article').on('click', 'a.read-on', function(e) {
+  $('article').on('click', 'a.read-on', function (e) {
     e.preventDefault();
     if ($(this).text() === 'Read on →') {
       $(this).parent().find('*').fadeIn();
@@ -66,17 +66,16 @@ articleView.setTeasers = function() {
     } else {
       $('body').animate({
         scrollTop: ($(this).parent().offset().top)
-      },200);
+      }, 200);
       $(this).html('Read on &rarr;');
       $(this).parent().find('.article-body *:nth-of-type(n+2)').hide();
     }
   });
 };
 
-articleView.initNewArticlePage = function() {
+articleView.initNewArticlePage = function () {
   $('.tab-content').show();
-  $('#export-field').hide();
-  $('#article-json').on('focus', function(){
+  $('#article-json').on('focus', function () {
     this.select();
   });
 
@@ -84,7 +83,7 @@ articleView.initNewArticlePage = function() {
   $('#new-form').on('submit', articleView.submit);
 };
 
-articleView.create = function() {
+articleView.create = function () {
   let article;
   $('#articles').empty();
 
@@ -99,15 +98,13 @@ articleView.create = function() {
 
   $('#articles').append(article.toHtml());
 
-  $('pre code').each(function(i, block) {
+  $('pre code').each(function (i, block) {
     hljs.highlightBlock(block);
   });
 
-  $('#export-field').show();
-  $('#article-json').val(`${JSON.stringify(article)},`);
 };
 
-articleView.submit = function(event) {
+articleView.submit = function (event) {
   event.preventDefault();
   let article = new Article({
     title: $('#article-title').val(),
@@ -121,8 +118,8 @@ articleView.submit = function(event) {
   article.insertRecord();
 }
 
-articleView.initIndexPage = function() {
-  Article.all.forEach(function(article) {
+articleView.initIndexPage = function () {
+  Article.all.forEach(function (article) {
     $('#articles').append(article.toHtml())
   });
 
@@ -132,7 +129,7 @@ articleView.initIndexPage = function() {
   articleView.handleMainNav();
   articleView.setTeasers();
 
-  $('pre code').each(function(i, block) {
+  $('pre code').each(function (i, block) {
     hljs.highlightBlock(block);
   });
 };
