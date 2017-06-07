@@ -54,7 +54,7 @@ Article.fetchAll = function(callback) {
 };
 
 
-// REVIEW: Take a few minutes and review what each of these new methods do in relation to our server and DB
+// : Take a few minutes and review what each of these new methods do in relation to our server and DB
 Article.truncateTable = function(callback) {
   $.ajax({
     url: '/articles',
