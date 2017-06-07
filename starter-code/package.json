@@ -4,6 +4,7 @@
   "description": "As we now complete our MVC conversation, we can refactor our app to use good MVC separation of concerns.",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Code Fellows",
