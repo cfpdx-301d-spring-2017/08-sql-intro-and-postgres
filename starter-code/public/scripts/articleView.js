@@ -80,7 +80,7 @@ articleView.initNewArticlePage = function() {
     this.select();
   });
 
-  $('#new-form').on('change', 'input, textarea', articleView.create);
+  // $('#new-form').on('change', 'input, textarea', articleView.create);
   $('#new-form').on('submit', articleView.submit);
 };
 
