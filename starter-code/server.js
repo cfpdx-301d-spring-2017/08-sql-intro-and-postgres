@@ -35,7 +35,7 @@ app.use(express.static('./public'));
 // REVIEW: Routes for requesting HTML resources
 app.get('/new', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // Put your response here... This piece of code is #5 in the png. The method that is interacting with this piece of code is Article.fetchAll. This segment is the response part of the Read. 
   response.sendFile('new.html', {root: './public'});
 });
 
@@ -43,7 +43,7 @@ app.get('/new', function(request, response) {
 // REVIEW: Routes for making API calls to use CRUD Operations on our database
 app.get('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // Put your response here...This line of code refers to #3 in the png. The method that is interacting with this line is fetchAll. Read is the portion of CRUD that is being enacted. 
   client.query('SELECT * FROM articles')
   .then(function(result) {
     response.send(result.rows);
@@ -55,7 +55,7 @@ app.get('/articles', function(request, response) {
 
 app.post('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // Put your response here... Again, this line of code is represented as #3 in the png. For this method, insertRecord is being used and the Create portion of CRUD is being enacted. 
   client.query(
     `INSERT INTO
     articles(title, author, "authorUrl", category, "publishedOn", body)
@@ -80,7 +80,7 @@ app.post('/articles', function(request, response) {
 
 app.put('/articles/:id', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // Put your response here... We are seeing #3 of the png being used in line 84. The method updateRecord is intereacting with this line. The Update portion of CRUD is being enacted. 
   client.query(
     `UPDATE articles
     SET
@@ -107,7 +107,7 @@ app.put('/articles/:id', function(request, response) {
 
 app.delete('/articles/:id', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // Put your response here... Number 3 of the png corresponds with this line of code. The method that interacts with this piece is deletRecord. The Destroy portion of CRUD is being enacted. 
   client.query(
     `DELETE FROM articles WHERE article_id=$1;`,
     [request.params.id]
@@ -122,7 +122,7 @@ app.delete('/articles/:id', function(request, response) {
 
 app.delete('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // Put your response here... This is still a query so it's #3. truncateTable is the method being interacted with. And the Destroy portion of CRUD is being enacted. 
   client.query(
     'DELETE FROM articles;'
   )
@@ -147,7 +147,7 @@ app.listen(PORT, function() {
 ////////////////////////////////////////
 function loadArticles() {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // Put your response here... This would be #3, a query. The method we are interacting with is insertRecord. The portion of CRUD we're enacting is Read. 
   client.query('SELECT COUNT(*) FROM articles')
   .then(result => {
     // REVIEW: result.rows is an array of objects that Postgres returns as a response to a query.
@@ -173,7 +173,7 @@ function loadArticles() {
 
 function loadDB() {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // Put your response here...This is also a query so #3. We are not interacting with a method with this call. We are enacting the Create portion of CRUD.
   client.query(`
     CREATE TABLE IF NOT EXISTS articles (
       article_id SERIAL PRIMARY KEY,
