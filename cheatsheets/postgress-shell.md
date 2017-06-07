@@ -3,10 +3,14 @@
 ## Starting the server
 *You must do this every time you restart your machine*
 ```
+
+$ pg_ctl -D /usr/local/var/postgres/ -l /usr/local/var/postgres/server.log start
+
+<!-- you can alias for the above command as pgstart -->
 $ pgstart
 
-<!-- pgstart is an alias for the following command -->
-$ pg_ctl -D /usr/local/var/postgres/ -l /usr/local/var/postgres/server.log start
+<!-- for Windows your path might look like the following -->
+> pg_ctl -D 'C:/Program Files/PostgreSQL/9.6/data' start
 
 <!-- If you installed postgreSQL with HomeBrew, you can also do this: -->
 $ brew services start postgres
