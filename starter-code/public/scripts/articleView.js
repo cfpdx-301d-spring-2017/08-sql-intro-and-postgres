@@ -77,8 +77,10 @@ articleView.initNewArticlePage = function() {
   $('.tab-content').show();
 };
 
-$('#new-form').on('change', 'input, textarea', articleView.create);
-$('#new-form').on('submit', articleView.submit);
+$('#new-form').on('change', articleView.create);
+$('#new-form').on('submit', function() {
+  articleView.submit();
+});
 
 articleView.create = function() {
   let article;
@@ -100,9 +102,8 @@ articleView.create = function() {
   });
 };
 
-articleView.submit = function(event) {
+articleView.submit = function() {
   event.preventDefault();
-  console.log('submitted');
   let article = new Article({
     title: $('#article-title').val(),
     author: $('#article-author').val(),
