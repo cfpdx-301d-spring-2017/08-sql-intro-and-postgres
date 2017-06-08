@@ -67,10 +67,14 @@ Article.truncateTable = function(callback) {
 };
 
 Article.prototype.insertRecord = function(callback) {
+  console.log('insertRecord has been called');
   $.post('/articles', {author: this.author, authorUrl: this.authorUrl, body: this.body, category: this.category, publishedOn: this.publishedOn, title: this.title})
   .then(function(data) {
     console.log(data);
     if (callback) callback();
+  })
+  .catch(function(err) {
+    console.error(err);
   })
 };
 
