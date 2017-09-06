@@ -104,7 +104,8 @@ articleView.create = function() {
   });
 
   $('#export-field').show();
-  $('#article-json').val(`${JSON.stringify(article)},`);
+  //DONE
+  // $('#article-json').val(`${JSON.stringify(article)},`);
 };
 
 articleView.submit = function(event) {
