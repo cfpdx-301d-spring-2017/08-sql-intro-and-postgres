@@ -31,17 +31,17 @@ app.use(express.static('./public'))
 
 // REVIEW: Routes for requesting HTML resources
 app.get('/new', function (request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
+  // COMMENT - done: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
-  // Number five on the full-stack diagram. Trick question for the second two questions, because its loading new.html rather than index.html, and CRUD is a feature of SQL.
+  // Number 5 on the full-stack diagram corresponds to the following line of code. Trick question for the second two questions, because its loading new.html rather than index.html, and CRUD is a feature of SQL.
   response.sendFile('new.html', {root: './public'})
 })
 
 // REVIEW: Routes for making API calls to use CRUD Operations on our database
 app.get('/articles', function (request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
+  // COMMENT - done: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
-  // Number three on the full-stack diagram. The article.fetchAll method is interacting with thid piece of 'server.js'. READ is the part of CRUD being enacted.
+  // Number 3 on the full-stack diagram corrsponds to the following line of code. The article.fetchAll method is interacting with thid piece of 'server.js'. READ is the part of CRUD being enacted.
   client.query('SELECT * FROM articles')
   .then(function (result) {
     response.send(result.rows)
@@ -52,9 +52,9 @@ app.get('/articles', function (request, response) {
 })
 
 app.post('/articles', function (request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
+  // COMMENT - done: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
-  // Number three on the full-stack diagram. The article.fetchAll method is interacting with this piece of 'server.js'. CREATE is the part of CRUD being enacted.
+  // Number 3 on the full-stack diagram corresponds to the following line of code. The article.fetchAll method is interacting with this piece of 'server.js'. CREATE is the part of CRUD being enacted.
   client.query(
     `INSERT INTO
     articles(title, author, "authorUrl", category, "publishedOn", body)
@@ -78,9 +78,9 @@ app.post('/articles', function (request, response) {
 })
 
 app.put('/articles/:id', function (request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
+  // COMMENT - done: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
-  //
+  //This is number 3 of the FS diagram that corresponds to the following line of code.  insertRecord() is the method of article.js that is interacting with this piece of server.js.  This is updating the article, so it would be the U of CRUD.
   client.query(
     `UPDATE articles
     SET
@@ -108,6 +108,7 @@ app.put('/articles/:id', function (request, response) {
 app.delete('/articles/:id', function (request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+  // This is number 3 of the FS diagram that corresponds to the following line of code.  deleteRecord() is the method of article.js that is interacting with this piece of server.js.  This is deleting the article, so it would be the D of CRUD.
   client.query(
     `DELETE FROM articles WHERE article_id=$1;`,
     [request.params.id]
@@ -121,8 +122,9 @@ app.delete('/articles/:id', function (request, response) {
 })
 
 app.delete('/articles', function (request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js) is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+  // This is number 3 of the FS diagram that corresponds to the following line of code.  deleteRecord() is the method of article.js that is interacting with this piece of server.js.  This is deleting the article, so it would be the D of CRUD.
   client.query(
     'DELETE FROM articles;'
   )
