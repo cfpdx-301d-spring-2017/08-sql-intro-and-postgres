@@ -38,6 +38,8 @@ app.use(express.static('./public'));
 app.get('/new', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+  // A's: it corresponds to #5, Article.prototype.insertRecord, create.
+  //
   response.sendFile('new.html', {root: './public'});
 });
 
